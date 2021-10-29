@@ -1,11 +1,12 @@
 import 'semantic-ui-css/semantic.min.css'
-import Layout from '../components/Layout'
+import Layout from 'components/Layout'
+import { Provider } from "next-auth/client"
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+    <Provider session={session}>
+      <Layout><Component {...pageProps} /></Layout>
+    </Provider>
   )
 }
 

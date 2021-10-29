@@ -1,9 +1,12 @@
+import { useRouter } from 'next/router'
 import { Button, Card } from 'semantic-ui-react'
 import { format } from 'timeago.js'
 
 export default function CardTask({ tasks }) {
+    const router = useRouter()
+
     return (
-        <div>
+        <>
             <Card.Group itemsPerRow={3}>
                 {
                     tasks.map((task) => (
@@ -26,6 +29,6 @@ export default function CardTask({ tasks }) {
                     ))
                 }
             </Card.Group>
-        </div>
+        </>
     )
 }

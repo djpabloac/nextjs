@@ -1,4 +1,3 @@
-import { Card } from 'semantic-ui-react'
 import EmptyTask from 'components/tasks/EmptyTask'
 import CardTask from 'components/tasks/CardTask'
 
