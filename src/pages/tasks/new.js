@@ -1,8 +1,9 @@
+import Layout from 'components/Layout'
 import { useState, useEffect } from 'react'
 import { Form, Grid, Button, Header, Icon } from 'semantic-ui-react'
 import { useRouter } from 'next/router'
 
-export default function TaskFormPage() {
+export default function TaskNew() {
     const router = useRouter()
     const { id } = router.query
 
@@ -92,64 +93,69 @@ export default function TaskFormPage() {
         if (id) {
             getTask()
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
-        <Grid
-            centered
-            verticalAlign="middle"
-            columns={3}
-            style={{ height: "80vh" }}
-        >
-            <Grid.Row>
-                <Grid.Column textAlign="center">
-                    <Button
-                        icon
-                        labelPosition='left'
-                        onClick={back} >
-                        <Icon name='arrow left' />
-                        Atrás
-                    </Button>
-                    <Header as="h2">
-                        {id ? 'Editar tarea' : 'Crear tarea'}
-                    </Header>
+        <>
+            <Layout>
+                <Grid
+                    centered
+                    verticalAlign="middle"
+                    columns={3}
+                    style={{ height: "80vh" }}
+                >
+                    <Grid.Row>
+                        <Grid.Column textAlign="center">
+                            <Button
+                                icon
+                                labelPosition='left'
+                                onClick={back} >
+                                <Icon name='arrow left' />
+                                Atrás
+                            </Button>
+                            <Header as="h2">
+                                {id ? 'Editar tarea' : 'Crear tarea'}
+                            </Header>
 
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Input
-                            label="Título"
-                            placeholder="Título"
-                            autoFocus
-                            name="title"
-                            onChange={handleChange}
-                            error={
-                                errors.title
-                                    ? { content: "Ingrese un título", pointing: "below" }
-                                    : null
-                            }
-                            value={newTask.title}
-                        />
-                        <Form.TextArea
-                            label="Descripción"
-                            placeholder="Descripción"
-                            name="description"
-                            onChange={handleChange}
-                            error={
-                                errors.description
-                                    ? { content: "Ingrese una descripción", pointing: "below" }
-                                    : null
-                            }
-                            value={newTask.description}
-                        />
+                            <Form onSubmit={handleSubmit}>
+                                <Form.Input
+                                    label="Título"
+                                    placeholder="Título"
+                                    autoFocus
+                                    name="title"
+                                    onChange={handleChange}
+                                    error={
+                                        errors.title
+                                            ? { content: "Ingrese un título", pointing: "below" }
+                                            : null
+                                    }
+                                    value={newTask.title}
+                                />
+                                <Form.TextArea
+                                    label="Descripción"
+                                    placeholder="Descripción"
+                                    name="description"
+                                    onChange={handleChange}
+                                    error={
+                                        errors.description
+                                            ? { content: "Ingrese una descripción", pointing: "below" }
+                                            : null
+                                    }
+                                    value={newTask.description}
+                                />
 
-                        <Button
-                            primary
-                            loading={loading}
-                            disabled={loading}>
-                            {id ? 'Editar' : 'Crear'}
-                        </Button>
-                    </Form>
-                </Grid.Column>
-            </Grid.Row>
-        </Grid>
+                                <Button
+                                    primary
+                                    loading={loading}
+                                    disabled={loading}>
+                                    {id ? 'Editar' : 'Crear'}
+                                </Button>
+                            </Form>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            </Layout>
+        </>
     )
 }

@@ -1,21 +1,27 @@
+import Layout from 'components/Layout'
 import EmptyTask from 'components/tasks/EmptyTask'
 import CardTask from 'components/tasks/CardTask'
 
-export default function Home({ tasks }) {
+export default function Index({ tasks }) {
+    if (tasks.length === 0)
+        return <Layout><EmptyTask /></Layout>
 
-  if (tasks.length === 0)
-    return <EmptyTask />
-
-  return <CardTask tasks={tasks} />
+    return <Layout><CardTask tasks={tasks} /></Layout>
 }
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks`)
-  const tasks = await res.json()
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks`)
+    if (res.status === 401)
+        return {
+            props: {
+                tasks: []
+            }
+        }
 
-  return {
-    props: {
-      tasks
-    },
-  }
+    const tasks = await res.json()
+    return {
+        props: {
+            tasks
+        },
+    }
 }

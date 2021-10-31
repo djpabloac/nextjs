@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import  { Grid, Button, Header } from 'semantic-ui-react'
+import { Grid, Button, Header } from 'semantic-ui-react'
 
 export default function EmptyTask() {
-    const router = useRouter()
+  const router = useRouter()
 
-    return (
-        <Grid
+  return (
+    <>
+      <Grid
         centered
         verticalAlign="middle"
         columns={1}
@@ -27,5 +28,6 @@ export default function EmptyTask() {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    )
+    </>
+  )
 }

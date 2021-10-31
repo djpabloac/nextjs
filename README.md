@@ -18,6 +18,17 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
+## Configuration file environment variables
+
+Second, create file environment variables and name `.env`
+
+```bash
+MONGO_URL=<connection string>
+NEXT_PUBLIC_BACKEND_URL=http://localhost:3000/api
+SECRET=<secret string>
+NEXTAUTH_URL=http://localhost:3000/api/auth
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

@@ -8,25 +8,27 @@ export default function Navbar() {
     const [session, loading] = useSession()
 
     if (loading) return <></>
-    
+
     return (
-        <Menu borderless attached inverted>
-            <Container>
-                <Menu.Item header onClick={() => router.push('/')}>
-                    <Icon name='talk' size="large" />
-                    Task
-                </Menu.Item>
-                <Menu.Item onClick={() => (session) ? signOut() : signIn()} >
-                    { (session) ? session.user.email : "Iniciar sesión" }
-                </Menu.Item>
-                <Menu.Menu position="right">
-                    <Menu.Item>
-                        <Button primary size="mini" onClick={() => router.push('/tasks/new')}>
-                            + Nueva tarea
-                        </Button>
+        <>
+            <Menu borderless attached inverted>
+                <Container>
+                    <Menu.Item header onClick={() => router.push('/')}>
+                        <Icon name='talk' size="large" />
+                        Task
                     </Menu.Item>
-                </Menu.Menu>
-            </Container>
-        </Menu>
+                    <Menu.Item onClick={() => (session) ? signOut() : signIn()} >
+                        {(session) ? session.user.email : "Iniciar sesión"}
+                    </Menu.Item>
+                    <Menu.Menu position="right">
+                        <Menu.Item>
+                            <Button primary size="mini" onClick={() => router.push('/tasks/new')}>
+                                + Nueva tarea
+                            </Button>
+                        </Menu.Item>
+                    </Menu.Menu>
+                </Container>
+            </Menu>
+        </>
     )
 }

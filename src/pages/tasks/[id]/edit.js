@@ -1,3 +1,3 @@
-import TaskFormPage from '../new'
+import TaskNew from '../new'
 
-export default TaskFormPage
+export default TaskNew

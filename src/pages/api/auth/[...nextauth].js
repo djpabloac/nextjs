@@ -23,16 +23,22 @@ export default NextAuth({
             }
         })
     ],
+    secret: process.env.JWT_SECRET,
     session: {
         jwt: true,
         maxAge: 30 * 24 * 60 * 60, // 30 days
         updateAge: 24 * 60 * 60, // 24 hours
     },
     jwt: {
+        secret: process.env.JWT_SECRET,
         encryption: true,
-        secret: process.env.SECRET
+        signingKey: process.env.JWT_SIGNING_KEY,
+        // encryptionKey: process.env.JWT_ENCRYPTION_KEY,
+        verificationOptions: {
+            algorithms: ["HS512"]
+        }
     },
     pages: {
         signIn: '/auth/credentials-signin',
-      }
+    }
 })
