@@ -15,7 +15,7 @@ export default function Navbar() {
                 <Container>
                     <Menu.Item header onClick={() => router.push('/')}>
                         <Icon name='talk' size="large" />
-                        Task
+                        Task App
                     </Menu.Item>
                     <Menu.Item onClick={() => (session) ? signOut() : signIn()} >
                         {(session) ? session.user.email : "Iniciar sesión"}

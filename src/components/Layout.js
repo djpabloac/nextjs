@@ -1,5 +1,5 @@
 import Navbar from './Navbar'
-import { useSession } from "next-auth/client"
+import { useSession, signIn } from "next-auth/client"
 import { Container, Header } from 'semantic-ui-react'
 import { useRouter } from 'next/router'
 
@@ -9,7 +9,7 @@ export default function Layout({ children }) {
 
     if (loading) return <Header size="medium">Loanding...</Header>
 
-    if (!session) router.push('/auth/credentials-signin')
+    if (!session) signIn()
 
     return (
         <>
