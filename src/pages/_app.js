@@ -1,12 +1,11 @@
-import 'semantic-ui-css/semantic.min.css'
-import { Provider } from "next-auth/client"
+import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <Provider session={session}>
+    <SessionProvider session={session}>
       <Component {...pageProps} />
-    </Provider>
-  )
+    </SessionProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

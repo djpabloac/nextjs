@@ -1,6 +1,6 @@
 import { Menu, Container, Button, Icon } from 'semantic-ui-react'
 import { useRouter } from 'next/router'
-import { useSession, signIn, signOut } from "next-auth/client"
+import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Navbar() {
 

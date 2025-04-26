@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { getCsrfToken } from "next-auth/client"
+import { getCsrfToken } from "next-auth/react"
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
 export default function SignIn({ csrfToken }) {

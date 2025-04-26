@@ -1,11 +1,10 @@
 import Navbar from './Navbar'
-import { useSession, signIn } from "next-auth/client"
 import { Container, Header } from 'semantic-ui-react'
-import { useRouter } from 'next/router'
+import { useSession, signIn } from 'next-auth/react'
 
 export default function Layout({ children }) {
-    const router = useRouter()
-    const [session, loading] = useSession()
+    const { data: session, status } = useSession();
+    const loading = status === 'loading'
 
     if (loading) return <Header size="medium">Loanding...</Header>
 

@@ -17,18 +17,26 @@ export default function Index({ tasks }) {
 }
 
 export async function getServerSideProps(context) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks`)
-    if (res.status === 401)
-        return {
-            props: {
-                tasks: []
-            }
+    const apiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks`;
+    let tasks = [];
+
+    try {
+        const res = await fetch(apiUrl);
+
+        if (res.ok) {
+            tasks = await res.json();
+        } else {
+            console.error(`Error al obtener tareas desde ${apiUrl}: Estado ${res.status}`);
         }
 
-    const tasks = await res.json()
+    } catch (error) {
+        console.error(`Error de red al intentar obtener tareas desde ${apiUrl}:`, error);
+    }
+
     return {
         props: {
             tasks
         },
-    }
+    };
 }
+
