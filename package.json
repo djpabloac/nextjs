@@ -23,7 +23,7 @@
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^15.5.16"
+    "eslint": "^10.6.0",
+    "eslint-config-next": "^16.2.9"
   }
 }
