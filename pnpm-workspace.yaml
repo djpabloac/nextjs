@@ -1,3 +1,8 @@
+# pnpm ≥10 ya no lee `pnpm.overrides` de package.json: los overrides viven acá.
+overrides:
+  uuid: ^11.1.1
+  postcss: ^8.5.10
+
 onlyBuiltDependencies:
   - sharp
   - unrs-resolver

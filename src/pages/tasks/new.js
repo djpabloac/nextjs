@@ -74,27 +74,18 @@ export default function TaskNew() {
         }
     }
 
-    const getTask = async () => {
-        try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks/${id}`)
-            const task = await res.json()
-
-            setNewTask({
-                title: task.title,
-                description: task.description
-            })
-        } catch (err) {
-            console.error(err)
-        }
-    }
-
     useEffect(() => {
-        console.log("Effect")
-        if (id) {
-            getTask()
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+        if (!id) return
+        let cancelled = false
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks/${id}`)
+            .then(res => res.json())
+            .then(task => {
+                if (cancelled) return
+                setNewTask({ title: task.title, description: task.description })
+            })
+            .catch(console.error)
+        return () => { cancelled = true }
+    }, [id])
 
     return (
         <>
